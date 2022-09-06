@@ -11,11 +11,12 @@ SE-app (front-end)
     * Este comando ira iniciar o projeto abrindo o navegador em conjunto.
   
  SE-api
-  * Será ncessário instalar o sdk do dotnet 6.0
-    https://dotnet.microsoft.com/en-us/download/dotnet/6.0
-    * Após a instalação do dotnet é possível verificar sua versão através do comando 
-    - dotnet --version
-   * Para rodar o projeto:
-     - Abra a pasta do projeto.
-     - Para buildar o digite:  dotnet build
-     - Para rodar o projeto digite: dotnet run 
+  Será ncessário instalar o sdk do dotnet 6.0
+  https://dotnet.microsoft.com/en-us/download/dotnet/6.0
+  * Após a instalação do dotnet é possível verificar sua versão através do comando 
+  - dotnet --version
+  Para rodar o projeto abra a pasta do projeto.
+  - dotnet build
+   * Este comando fará o build do projeto:  
+  - dotnet run 
+    * Este comando inicia o projeto

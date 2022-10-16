@@ -1,9 +1,14 @@
-﻿namespace se_api.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace se_api.Models
 {
     public class Disciplina
     {
+        [Key]
         public int Codigo { get; set; }
+        [Required(ErrorMessage = "Necessário informar o nome da disciplina")]
         public string Nome { get; set; }
+        [Required(ErrorMessage = "Necessário informar a carga horária")]
         public double CargaHoraria { get; set; }
 
         public Disciplina()

@@ -3,11 +3,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace se_api.Models
 {
-    public class Matriculas
+    public class Matricula
     {
         [Key]
         public int Codigo { get; set; }
-        [ForeignKey("Aluno")]
+        [ForeignKey("Alunos")]
         public int CodAluno { get; set; }
         public Aluno Aluno { get; set; }
         [Required(ErrorMessage = "Necessario informa o numero")]
@@ -19,11 +19,11 @@ namespace se_api.Models
         [Required(ErrorMessage = "Necessario informa se ativo ou não")]
         public bool Ativo  { get; set; }
 
-        public Matriculas()
+        public Matricula()
         {
         }
 
-        public Matriculas(int codigo, int codAluno, Aluno aluno, int numero, DateTime dataInicio, DateTime dataFim, bool ativo)
+        public Matricula(int codigo, int codAluno, Aluno aluno, int numero, DateTime dataInicio, DateTime dataFim, bool ativo)
         {
             Codigo = codigo;
             CodAluno = codAluno;

@@ -7,7 +7,7 @@ namespace se_api.Models
     {
         [Key]
         public int Codigo { get; set; }
-        [ForeignKey("Aluno")]
+        [ForeignKey("Alunos")]
         public int CodAluno { get; set; }
         public Aluno Aluno { get; set; }
         public List<Nota> Notas { get; set; }

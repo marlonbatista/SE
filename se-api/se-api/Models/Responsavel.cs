@@ -7,8 +7,6 @@ namespace se_api.Models
     {
         [Key]
         public Guid Codigo { get; set; }
-        [ForeignKey("Telefone")]
-        public int CodTelefone { get; set; }
         public List<Telefone> Telefones { get; set; }
         [Required(ErrorMessage = "Necessario informa se é contrantante")]
         public bool Contrante { get; set; }
@@ -29,10 +27,15 @@ namespace se_api.Models
             bool contrante,
             string tipo)
         {
-            Codigo = Guid.NewGuid();
+            Codigo = codigo;
             Telefones = telefones;
             Contrante = contrante;
             Tipo = tipo;
+            Nome = nome;
+            SobreNome = sobreNome;
+            CPF = cpf;
+            RG = rg;
+
         }
     }
 }

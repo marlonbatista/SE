@@ -1,0 +1,43 @@
+<footer>
+    <div class="container">
+        <div>
+            <a href="">
+                <img src="../../../assets/logoClaro.png" alt="logo">
+            </a>
+            <ul>
+                <li>Desenvolvido por:</li>
+                <li>Anderson Balieiro</li>
+                <li>João Duque</li>
+                <li>Marlon Batista</li>
+                <li>Nicolas Balduino</li>
+            </ul>
+        </div>
+        
+        <div *ngIf="conected">
+            <h3>Aluno</h3>
+            <ul>
+                <li><a mat-button>Registro</a></li>
+                <li><a mat-button>Matrícula</a></li>
+                <li><a mat-button>Boletim</a></li>
+            </ul>
+        </div>
+        <div *ngIf="conected">
+            <h3>Organizacional</h3>
+            <ul>
+                <li><a mat-button>Série</a></li>
+                <li><a mat-button>Turma</a></li>
+                <li><a mat-button>Disciplina</a></li>
+            </ul>
+        </div>
+        <div *ngIf="conected">
+            <h3>Relatório</h3>
+            <ul>
+                <li><a mat-button>Livro de Notas</a></li>
+                <li><a mat-button>Por Série</a></li>
+                <li><a mat-button>Por Turma</a></li>
+                <li><a mat-button>Por Aluno</a></li>
+            </ul>
+        </div>
+    </div>
+    <p>Copyright © Todos os direito reservados | 2022</p>
+</footer>

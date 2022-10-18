@@ -133,4 +133,4 @@ se-api/se-api/.DS_Store
 se-api/se-api/_NCrunch*
 
 # Arquivo de configuração do bd
-se-api/se-api/Context/Config/Setting.cs
+./se-api/se-api/Context/Config/Setting.cs

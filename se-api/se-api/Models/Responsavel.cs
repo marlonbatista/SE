@@ -6,11 +6,15 @@ namespace se_api.Models
     public class Responsavel : Humano
     {
         [Key]
-        public Guid Codigo { get; set; }
+        public int Codigo { get; set; }
         public List<Telefone> Telefones { get; set; }
         [Required(ErrorMessage = "Necessario informa se é contrantante")]
         public bool Contrante { get; set; }
         [Required(ErrorMessage = "Necessario informa o tipo do responsavel")]
+
+        public int RegistroAluno { get; set; }
+        public Aluno Aluno { get; set; }
+
         public string Tipo { get; set; }
 
         public Responsavel()
@@ -18,14 +22,15 @@ namespace se_api.Models
         }
 
         public Responsavel(
-            Guid codigo, 
+            int codigo, 
             string nome, 
             string sobreNome, 
             string cpf, 
             string rg, 
             List<Telefone> telefones, 
             bool contrante,
-            string tipo)
+            string tipo,
+            int registroAluno)
         {
             Codigo = codigo;
             Telefones = telefones;
@@ -35,6 +40,7 @@ namespace se_api.Models
             SobreNome = sobreNome;
             CPF = cpf;
             RG = rg;
+            RegistroAluno = registroAluno;
 
         }
     }

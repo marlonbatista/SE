@@ -10,6 +10,7 @@ namespace se_api.Models
         public string Nome { get; set; }
         [Required(ErrorMessage = "Necessário informar a carga horária")]
         public double CargaHoraria { get; set; }
+        public List<SerieDisciplina> SerieDisciplinas { get; set; }
 
         public Disciplina()
         {
@@ -20,6 +21,7 @@ namespace se_api.Models
             Codigo = codigo;
             Nome = nome;
             CargaHoraria = cargaHoraria;
+            SerieDisciplinas = new List<SerieDisciplina>();
         }
     }
 }

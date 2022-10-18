@@ -8,7 +8,7 @@ namespace se_api.Models
         [Key]
         public int Codigo { get; set; }
         [ForeignKey("Alunos")]
-        public int CodAluno { get; set; }
+        public int RegistroAluno { get; set; }
         public Aluno Aluno { get; set; }
         public List<Nota> Notas { get; set; }
         [Required(ErrorMessage ="Necessario informar o número de faltas")]
@@ -19,10 +19,10 @@ namespace se_api.Models
         {
         }
 
-        public Boletim(int codigo, int codAluno, Aluno aluno, List<Nota> notas, int faltas, List<Disciplina> disciplinas)
+        public Boletim(int codigo, int registroAluno, Aluno aluno, List<Nota> notas, int faltas, List<Disciplina> disciplinas)
         {
             Codigo = codigo;
-            CodAluno = codAluno;
+            RegistroAluno = registroAluno;
             Aluno = aluno;
             Notas = notas;
             Faltas = faltas;

@@ -8,7 +8,7 @@ namespace se_api.Models
         [Key]
         public int Codigo { get; set; }
         [ForeignKey("Alunos")]
-        public int CodAluno { get; set; }
+        public int RegistroAluno { get; set; }
         public Aluno Aluno { get; set; }
         [Required(ErrorMessage = "Necessario informa o numero")]
         public int Numero { get; set; }
@@ -23,10 +23,10 @@ namespace se_api.Models
         {
         }
 
-        public Matricula(int codigo, int codAluno, Aluno aluno, int numero, DateTime dataInicio, DateTime dataFim, bool ativo)
+        public Matricula(int codigo, int registroAluno, Aluno aluno, int numero, DateTime dataInicio, DateTime dataFim, bool ativo)
         {
             Codigo = codigo;
-            CodAluno = codAluno;
+            RegistroAluno = registroAluno;
             Aluno = aluno;
             Numero = numero;
             DataInicio = dataInicio;

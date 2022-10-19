@@ -1,0 +1,18 @@
+header {
+    width: 100%;
+    background-color: #293641;
+}
+
+header > .container {
+    display: flex;
+    align-items: center;
+    font-size: 14pt;
+}
+
+.nav {
+    width: 100%;
+}
+
+img {
+    width: 150px;
+}

@@ -1,0 +1,13 @@
+<main>
+    <div class="container">
+        <fieldset>
+            <legend><h1>{{"Título"}}</h1></legend>
+
+            <app-info-card *ngIf="mostrarInfo"></app-info-card>
+
+            <router-outlet></router-outlet>
+
+            <!-- <app-inicio></app-inicio> -->
+        </fieldset>
+    </div>
+</main>

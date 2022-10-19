@@ -1,0 +1,135 @@
+<form>
+    <mat-form-field class="form-field" appearance="outline" color="accent">
+        <mat-label>Ação</mat-label>
+        <mat-select id="selAcao" [(ngModel)]="acao" name="acao">
+            <mat-option *ngFor="let acao of acoes" [value]="acao.valor"> {{acao.texto}} </mat-option>
+        </mat-select>
+        <mat-hint>Hint</mat-hint>
+    </mat-form-field>
+    <mat-form-field class="form-field" appearance="outline" color="accent">
+        <mat-label>Código</mat-label>
+        <input matInput type="number" [(ngModel)]="codigo" name="codigo" placeholder="Ex.: 1">
+        <mat-hint>Hint</mat-hint>
+    </mat-form-field>
+    <mat-form-field class="form-field" appearance="outline" color="accent">
+        <mat-label>Nome</mat-label>
+        <input matInput [(ngModel)]="nome" name="nome" placeholder="Ex.: João">
+        <mat-hint>Hint</mat-hint>
+    </mat-form-field>
+    <mat-form-field class="form-field" appearance="outline" color="accent">
+        <mat-label>Sobrenome</mat-label>
+        <input matInput [(ngModel)]="sobrenome" name="sobrenome" placeholder="Ex.: Silva">
+        <mat-hint>Hint</mat-hint>
+    </mat-form-field>
+    <mat-form-field class="form-field" appearance="outline" color="accent">
+        <mat-label>Data de Nascimento</mat-label>
+        <input matInput type="date" [(ngModel)]="dataNascimento" name="dataNascimento" placeholder="Ex.: 01/12/2000">
+        <mat-hint>Hint</mat-hint>
+    </mat-form-field>
+    <mat-form-field class="form-field" appearance="outline" color="accent">
+        <mat-label>Local de Nascimento</mat-label>
+        <input matInput [(ngModel)]="localNascimento" name="localNascimento" placeholder="Ex.: Campinas">
+        <mat-hint>Hint</mat-hint>
+    </mat-form-field>
+    <mat-form-field class="form-field" appearance="outline" color="accent">
+        <mat-label>Certidão de Nascimento (Apenas Números)</mat-label>
+        <input matInput type="number" [(ngModel)]="certidaoNascimento" name="certidaoNascimento" placeholder="Ex.: 000000000000000">
+        <mat-hint>Hint</mat-hint>
+    </mat-form-field>
+    <mat-form-field class="form-field" appearance="outline" color="accent">
+        <mat-label>C.P.F. (Apenas Números)</mat-label>
+        <input  matInput type="number"[(ngModel)]="cpf" name="cpf" placeholder="Ex.: 00000000000">
+        <mat-hint>Hint</mat-hint>
+    </mat-form-field>
+    <mat-form-field class="form-field" appearance="outline" color="accent">
+        <mat-label>R.G (Apenas Números)</mat-label>
+        <input matInput type="number" [(ngModel)]="rg" name="rg" placeholder="Ex.: 000000000">
+        <mat-hint>Hint</mat-hint>
+    </mat-form-field>
+
+    <h2>Endereço</h2>
+
+    <mat-form-field class="form-field" appearance="outline" color="accent">
+        <mat-label>Logradouro</mat-label>
+        <input matInput placeholder="Ex.: João">
+        <mat-hint>Hint</mat-hint>
+    </mat-form-field>
+    <mat-form-field class="form-field" appearance="outline" color="accent">
+        <mat-label>Número (Apenas Números)</mat-label>
+        <input type="number" matInput placeholder="Ex.: João Silva">
+        <mat-hint>Hint</mat-hint>
+    </mat-form-field>
+    <mat-form-field class="form-field" appearance="outline" color="accent">
+        <mat-label>Bairro</mat-label>
+        <input matInput placeholder="Ex.: Silva">
+        <mat-hint>Hint</mat-hint>
+    </mat-form-field>
+    <mat-form-field class="form-field" appearance="outline" color="accent">
+        <mat-label>Cidade</mat-label>
+        <input matInput placeholder="Ex.: João Silva">
+        <mat-hint>Hint</mat-hint>
+    </mat-form-field>
+    <mat-form-field class="form-field" appearance="outline" color="accent">
+        <mat-label>Estado</mat-label>
+        <input matInput placeholder="Ex.: João Silva">
+        <mat-hint>Hint</mat-hint>
+    </mat-form-field>
+
+    <div *ngFor="let a of responsavelArray; let index = index">
+        <h2> Responsável {{index + 1}} </h2>
+
+        <mat-form-field class="form-field" appearance="outline" color="accent">
+            <mat-label>Tipo</mat-label>
+            <mat-select id="selAcao" [(ngModel)]="tipo" name="tipo">
+                <mat-option *ngFor="let tipo of tipos" [value]="tipo.valor"> {{tipo.texto}} </mat-option>
+            </mat-select>
+            <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+        <mat-form-field class="form-field" appearance="outline" color="accent">
+            <mat-label>Nome</mat-label>
+            <input matInput placeholder="Ex.: João">
+            <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+        <mat-form-field class="form-field" appearance="outline" color="accent">
+            <mat-label>Sobrenome</mat-label>
+            <input matInput placeholder="Ex.: Silva">
+            <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+        <mat-form-field class="form-field" appearance="outline" color="accent">
+            <mat-label>C.P.F. (Apenas Números)</mat-label>
+            <input type="number" matInput placeholder="Ex.: 00000000000">
+            <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+        <mat-form-field class="form-field" appearance="outline" color="accent">
+            <mat-label>R.G (Apenas Números)</mat-label>
+            <input type="number" matInput placeholder="Ex.: 000000000">
+            <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+        <mat-form-field class="form-field" appearance="outline" color="accent">
+            <mat-label>Telefone</mat-label>
+            <input matInput placeholder="Ex.: 16990000000">
+            <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+        <div class="form-field">
+            <mat-slide-toggle class="slider">Contratante</mat-slide-toggle>
+        </div>
+    </div>
+
+    <div class="form-field-button">
+        <button mat-stroked-button type="button" (click)="addResponsavel()" color="accent"> 
+            Adicionar Outro Responsável
+        </button>
+        <button mat-stroked-button type="button" (click)="removeResponsavel()" color="warn"> 
+            Remover um Responsável
+        </button>
+    </div>
+
+    <div class="form-field-button">
+        <button mat-flat-button type="submit" (click)="addResponsavel()" color="accent"> 
+            Salvar
+        </button>
+        <button mat-flat-button type="reset" (click)="removeResponsavel()" color="warn"> 
+            Cancelar
+        </button>
+    </div>
+</form>

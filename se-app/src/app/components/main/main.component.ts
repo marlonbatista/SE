@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-main',
@@ -9,9 +10,16 @@ export class MainComponent implements OnInit {
 
   mostrarInfo: boolean = false;
 
-  constructor() { }
+  titulo!: string;
 
-  ngOnInit(): void {
-  }
+  constructor(private route: ActivatedRoute, private router: Router ) { }
+
+  ngOnInit() {
+    this.router.events.subscribe(event => {
+      if(event instanceof NavigationEnd) {
+        this.titulo = this.route.root.firstChild?.snapshot.data['titulo'];
+      }
+    });
+  }    
 
 }

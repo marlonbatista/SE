@@ -24,6 +24,7 @@ import { InfoCardComponent } from './components/info-card/info-card.component';
 import { FormLoginComponent } from './components/form-login/form-login.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { FormAlunoRegistroComponent } from './components/form-aluno-registro/form-aluno-registro.component';
+import { FormAlunoDesempenhoComponent } from './components/form-aluno-desempenho/form-aluno-desempenho.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { FormAlunoRegistroComponent } from './components/form-aluno-registro/for
     InfoCardComponent,
     FormLoginComponent,
     InicioComponent,
-    FormAlunoRegistroComponent
+    FormAlunoRegistroComponent,
+    FormAlunoDesempenhoComponent
   ],
   imports: [
     BrowserModule,

@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class FormAlunoRegistroComponent implements OnInit {
   
   acao: number = 0;
-  codigo: number = 0;
+  codigo!: number;
   nome: string = "";
   sobrenome: string = "";
   dataNascimento!: Date;

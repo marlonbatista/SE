@@ -16,26 +16,26 @@
         <div *ngIf="conected">
             <h3>Aluno</h3>
             <ul>
-                <li><a mat-button>Registro</a></li>
-                <li><a mat-button>Matrícula</a></li>
-                <li><a mat-button>Desempenho</a></li>
+                <li><a mat-button routerLink="/aluno-registro">Registro</a></li>
+                <li><a mat-button routerLink="/aluno-matricula">Matrícula</a></li>
+                <li><a mat-button routerLink="/aluno-desempenho">Desempenho</a></li>
             </ul>
         </div>
         <div *ngIf="conected">
             <h3>Organizacional</h3>
             <ul>
-                <li><a mat-button>Série</a></li>
-                <li><a mat-button>Turma</a></li>
-                <li><a mat-button>Disciplina</a></li>
+                <li><a mat-button routerLink="">Série</a></li>
+                <li><a mat-button routerLink="">Turma</a></li>
+                <li><a mat-button routerLink="/organizacional-disciplina">Disciplina</a></li>
             </ul>
         </div>
         <div *ngIf="conected">
             <h3>Relatório</h3>
             <ul>
-                <li><a mat-button>Livro de Notas</a></li>
-                <li><a mat-button>Por Série</a></li>
-                <li><a mat-button>Por Turma</a></li>
-                <li><a mat-button>Por Aluno</a></li>
+                <li><a mat-button routerLink="">Livro de Notas</a></li>
+                <li><a mat-button routerLink="">Por Série</a></li>
+                <li><a mat-button routerLink="">Por Turma</a></li>
+                <li><a mat-button routerLink="">Por Aluno</a></li>
             </ul>
         </div>
     </div>

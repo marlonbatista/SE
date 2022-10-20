@@ -16,7 +16,7 @@ export class FormAlunoRegistroComponent implements OnInit {
   certidaoNascimento: string = "";
   cpf: string = "";
   rg: string = "";
-  tipo: number = 0;
+  tipo!: number;
 
   responsavelArray = new Array(1);
 
@@ -24,7 +24,7 @@ export class FormAlunoRegistroComponent implements OnInit {
     {valor: 0, texto: "Criar"},
     {valor: 1, texto: "Editar"},
     {valor: 2, texto: "Deletar"},
-  ]
+  ];
   acaoSelecionada = this.acoes[0].valor;
 
   tipos = [
@@ -33,8 +33,7 @@ export class FormAlunoRegistroComponent implements OnInit {
     {valor: 2, texto: "Avô"},
     {valor: 3, texto: "Avó"},
     {valor: 4, texto: "Outro"},
-  ]
-  tipoSelecionado = this.tipos[0].valor;
+  ];
 
   constructor() { }
 

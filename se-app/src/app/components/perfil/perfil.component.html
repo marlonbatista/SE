@@ -1,0 +1,61 @@
+<form>
+    <mat-form-field class="form-field" appearance="outline" color="accent">
+        <mat-label>Nome</mat-label>
+        <input matInput [(ngModel)]="nome" name="nome" placeholder="Ex.: João">
+        <mat-hint>Hint</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field class="form-field" appearance="outline" color="accent">
+        <mat-label>Sobrenome</mat-label>
+        <input matInput [(ngModel)]="sobrenome" name="sobrenome" placeholder="Ex.: Silva">
+        <mat-hint>Hint</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field class="form-field" appearance="outline" color="accent">
+        <mat-label>C.P.F. (Apenas Números)</mat-label>
+        <input  matInput type="number"[(ngModel)]="cpf" name="cpf" placeholder="Ex.: 00000000000">
+        <mat-hint>Hint</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field class="form-field" appearance="outline" color="accent">
+        <mat-label>R.G (Apenas Números)</mat-label>
+        <input matInput type="number" [(ngModel)]="rg" name="rg" placeholder="Ex.: 000000000">
+        <mat-hint>Hint</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field class="form-field" appearance="outline" color="accent">
+        <mat-label>E-mail</mat-label>
+        <input matInput type="email" [(ngModel)]="email" name="email" placeholder="Ex.: joaosilva@email.com">
+        <mat-hint>Hint</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field class="form-field" appearance="outline" color="accent">
+        <mat-label>Nova Senha</mat-label>
+        <input matInput type="password" [(ngModel)]="novaSenha">
+        <mat-hint>Hint</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field class="form-field" appearance="outline" color="accent">
+        <mat-label>Confirme Nova Senha</mat-label>
+        <input matInput type="password" [(ngModel)]="confirmaSenha" name="confirmaSenha">
+        <mat-hint>Hint</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field class="form-field" appearance="outline" color="accent">
+        <mat-label>Senha atual</mat-label>
+        <input matInput type="password" [(ngModel)]="senhaAtual" name="senhaAtual">
+        <mat-hint>Hint</mat-hint>
+    </mat-form-field>
+
+    <div class="form-field-button">
+        <button mat-flat-button type="submit" color="accent"> 
+            Salvar
+        </button>
+        
+        <button mat-flat-button type="reset" color="warn"> 
+            Cancelar
+        </button>
+    </div>
+</form>
+
+

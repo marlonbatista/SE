@@ -25,6 +25,8 @@ import { FormLoginComponent } from './components/form-login/form-login.component
 import { InicioComponent } from './components/inicio/inicio.component';
 import { FormAlunoRegistroComponent } from './components/form-aluno-registro/form-aluno-registro.component';
 import { FormAlunoDesempenhoComponent } from './components/form-aluno-desempenho/form-aluno-desempenho.component';
+import { FormAlunoMatriculaComponent } from './components/form-aluno-matricula/form-aluno-matricula.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { FormAlunoDesempenhoComponent } from './components/form-aluno-desempenho
     FormLoginComponent,
     InicioComponent,
     FormAlunoRegistroComponent,
-    FormAlunoDesempenhoComponent
+    FormAlunoDesempenhoComponent,
+    FormAlunoMatriculaComponent,
+    PerfilComponent
   ],
   imports: [
     BrowserModule,

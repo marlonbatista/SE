@@ -4,8 +4,8 @@
         <button mat-button [matMenuTriggerFor]="aluno">Aluno</button>
         <mat-menu #aluno="matMenu">
             <a mat-menu-item routerLink="/aluno-registro">Registro</a>
-            <a mat-menu-item routerLink="">Matrícula</a>
-            <a mat-menu-item routerLink="/aluno-desempenho">Boletim</a>
+            <a mat-menu-item routerLink="/aluno-matricula">Matrícula</a>
+            <a mat-menu-item routerLink="/aluno-desempenho">Desempenho</a>
         </mat-menu>
 
         <button mat-button [matMenuTriggerFor]="organizacional">Organizacional</button>
@@ -53,7 +53,7 @@
 
     <a mat-button [matMenuTriggerFor]="usuario" *ngIf="conected; else userNotConected">Usuário</a>
     <mat-menu #usuario="matMenu">
-        <a mat-menu-item routerLink="">Minha Conta</a>
+        <a mat-menu-item routerLink="/perfil">Perfil</a>
         <a mat-menu-item *ngIf="admin">Usuários</a>
         <mat-divider></mat-divider>
         <a mat-menu-item routerLink="/login">Sair</a>

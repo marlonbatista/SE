@@ -27,6 +27,8 @@ import { FormAlunoRegistroComponent } from './components/form-aluno-registro/for
 import { FormAlunoDesempenhoComponent } from './components/form-aluno-desempenho/form-aluno-desempenho.component';
 import { FormAlunoMatriculaComponent } from './components/form-aluno-matricula/form-aluno-matricula.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
+import { RedefinirSenhaComponent } from './components/redefinir-senha/redefinir-senha.component';
+import { FormOrganizacionalDisciplinaComponent } from './components/form-organizacional-disciplina/form-organizacional-disciplina.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { PerfilComponent } from './components/perfil/perfil.component';
     FormAlunoRegistroComponent,
     FormAlunoDesempenhoComponent,
     FormAlunoMatriculaComponent,
-    PerfilComponent
+    PerfilComponent,
+    RedefinirSenhaComponent,
+    FormOrganizacionalDisciplinaComponent
   ],
   imports: [
     BrowserModule,

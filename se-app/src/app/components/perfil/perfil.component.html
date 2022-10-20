@@ -18,7 +18,7 @@
     </mat-form-field>
 
     <mat-form-field class="form-field" appearance="outline" color="accent">
-        <mat-label>R.G (Apenas Números)</mat-label>
+        <mat-label>R.G. (Apenas Números)</mat-label>
         <input matInput type="number" [(ngModel)]="rg" name="rg" placeholder="Ex.: 000000000">
         <mat-hint>Hint</mat-hint>
     </mat-form-field>
@@ -31,19 +31,22 @@
 
     <mat-form-field class="form-field" appearance="outline" color="accent">
         <mat-label>Nova Senha</mat-label>
-        <input matInput type="password" [(ngModel)]="novaSenha">
-        <mat-hint>Hint</mat-hint>
+        <input matInput type="password" [(ngModel)]="novaSenha" name="novaSenha" >
+        <mat-hint>Deve conter no mínimo 8 caracteres</mat-hint>
     </mat-form-field>
 
     <mat-form-field class="form-field" appearance="outline" color="accent">
         <mat-label>Confirme Nova Senha</mat-label>
         <input matInput type="password" [(ngModel)]="confirmaSenha" name="confirmaSenha">
-        <mat-hint>Hint</mat-hint>
+        <mat-hint>Digite a mesma senha do campo anterior</mat-hint>
     </mat-form-field>
+
+    <mat-divider></mat-divider>
+    <br>
 
     <mat-form-field class="form-field" appearance="outline" color="accent">
         <mat-label>Senha atual</mat-label>
-        <input matInput type="password" [(ngModel)]="senhaAtual" name="senhaAtual">
+        <input matInput type="password" [(ngModel)]="senhaAtual" name="senhaAtual" placeholder="Digite a senha atual para confirmar as alterações feitas">
         <mat-hint>Hint</mat-hint>
     </mat-form-field>
 

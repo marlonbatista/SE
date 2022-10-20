@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormLoginComponent implements OnInit {
 
+  usuario!: string;
+  senha!: string;
+
   constructor() { }
 
   ngOnInit(): void {

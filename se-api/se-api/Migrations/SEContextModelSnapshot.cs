@@ -79,10 +79,10 @@ namespace se_api.Migrations
                     b.Property<int>("AlunoRegistro")
                         .HasColumnType("int");
 
-                    b.Property<int>("CodAluno")
+                    b.Property<int>("Faltas")
                         .HasColumnType("int");
 
-                    b.Property<int>("Faltas")
+                    b.Property<int>("RegistroAluno")
                         .HasColumnType("int");
 
                     b.HasKey("Codigo");
@@ -179,9 +179,6 @@ namespace se_api.Migrations
                     b.Property<bool>("Ativo")
                         .HasColumnType("bit");
 
-                    b.Property<int>("CodAluno")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("DataFim")
                         .HasColumnType("datetime2");
 
@@ -189,6 +186,9 @@ namespace se_api.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<int>("Numero")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RegistroAluno")
                         .HasColumnType("int");
 
                     b.HasKey("Codigo");
@@ -257,11 +257,13 @@ namespace se_api.Migrations
 
             modelBuilder.Entity("se_api.Models.Responsavel", b =>
                 {
-                    b.Property<Guid>("Codigo")
+                    b.Property<int>("Codigo")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
 
-                    b.Property<int?>("AlunoRegistro")
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Codigo"), 1L, 1);
+
+                    b.Property<int>("AlunoRegistro")
                         .HasColumnType("int");
 
                     b.Property<string>("CPF")
@@ -278,6 +280,9 @@ namespace se_api.Migrations
                     b.Property<string>("RG")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("RegistroAluno")
+                        .HasColumnType("int");
 
                     b.Property<string>("SobreNome")
                         .IsRequired()
@@ -311,6 +316,21 @@ namespace se_api.Migrations
                     b.ToTable("Series");
                 });
 
+            modelBuilder.Entity("se_api.Models.SerieDisciplina", b =>
+                {
+                    b.Property<int>("CodDisciplina")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CodSerie")
+                        .HasColumnType("int");
+
+                    b.HasKey("CodDisciplina", "CodSerie");
+
+                    b.HasIndex("CodSerie");
+
+                    b.ToTable("SerieDisciplina");
+                });
+
             modelBuilder.Entity("se_api.Models.Telefone", b =>
                 {
                     b.Property<int>("Codigo")
@@ -329,8 +349,8 @@ namespace se_api.Migrations
                     b.Property<int?>("Pais")
                         .HasColumnType("int");
 
-                    b.Property<Guid?>("ResponsavelCodigo")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int?>("ResponsavelCodigo")
+                        .HasColumnType("int");
 
                     b.Property<int>("TipoTelefone")
                         .HasColumnType("int");
@@ -492,9 +512,32 @@ namespace se_api.Migrations
 
             modelBuilder.Entity("se_api.Models.Responsavel", b =>
                 {
-                    b.HasOne("se_api.Models.Aluno", null)
+                    b.HasOne("se_api.Models.Aluno", "Aluno")
                         .WithMany("Responsaveis")
-                        .HasForeignKey("AlunoRegistro");
+                        .HasForeignKey("AlunoRegistro")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Aluno");
+                });
+
+            modelBuilder.Entity("se_api.Models.SerieDisciplina", b =>
+                {
+                    b.HasOne("se_api.Models.Disciplina", "Disciplina")
+                        .WithMany("SerieDisciplinas")
+                        .HasForeignKey("CodDisciplina")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("se_api.Models.Serie", "Serie")
+                        .WithMany()
+                        .HasForeignKey("CodSerie")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Disciplina");
+
+                    b.Navigation("Serie");
                 });
 
             modelBuilder.Entity("se_api.Models.Telefone", b =>
@@ -533,6 +576,11 @@ namespace se_api.Migrations
                     b.Navigation("Disciplinas");
 
                     b.Navigation("Notas");
+                });
+
+            modelBuilder.Entity("se_api.Models.Disciplina", b =>
+                {
+                    b.Navigation("SerieDisciplinas");
                 });
 
             modelBuilder.Entity("se_api.Models.Responsavel", b =>

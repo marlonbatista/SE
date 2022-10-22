@@ -25,5 +25,12 @@ namespace se_api.Context
             optionsBuilder.UseSqlServer(Setting.ConnectionString);
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<SerieDisciplina>(entity =>
+            {
+                entity.HasKey(e => new {  e.CodDisciplina, e.CodSerie });
+            });
+        }
     }
 }

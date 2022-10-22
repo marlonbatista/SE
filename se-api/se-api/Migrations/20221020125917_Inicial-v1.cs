@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace se_api.Migrations
 {
-    public partial class inicial : Migration
+    public partial class Inicialv1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -142,7 +142,7 @@ namespace se_api.Migrations
                 {
                     Codigo = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CodAluno = table.Column<int>(type: "int", nullable: false),
+                    RegistroAluno = table.Column<int>(type: "int", nullable: false),
                     AlunoRegistro = table.Column<int>(type: "int", nullable: false),
                     Faltas = table.Column<int>(type: "int", nullable: false)
                 },
@@ -163,7 +163,7 @@ namespace se_api.Migrations
                 {
                     Codigo = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CodAluno = table.Column<int>(type: "int", nullable: false),
+                    RegistroAluno = table.Column<int>(type: "int", nullable: false),
                     AlunoRegistro = table.Column<int>(type: "int", nullable: false),
                     Numero = table.Column<int>(type: "int", nullable: false),
                     DataInicio = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -185,10 +185,12 @@ namespace se_api.Migrations
                 name: "Responsaveis",
                 columns: table => new
                 {
-                    Codigo = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Codigo = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Contrante = table.Column<bool>(type: "bit", nullable: false),
+                    RegistroAluno = table.Column<int>(type: "int", nullable: false),
+                    AlunoRegistro = table.Column<int>(type: "int", nullable: false),
                     Tipo = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    AlunoRegistro = table.Column<int>(type: "int", nullable: true),
                     Nome = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     SobreNome = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CPF = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -201,7 +203,8 @@ namespace se_api.Migrations
                         name: "FK_Responsaveis_Alunos_AlunoRegistro",
                         column: x => x.AlunoRegistro,
                         principalTable: "Alunos",
-                        principalColumn: "Registro");
+                        principalColumn: "Registro",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -240,7 +243,7 @@ namespace se_api.Migrations
                     DDD = table.Column<long>(type: "bigint", nullable: false),
                     Numero = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     TipoTelefone = table.Column<int>(type: "int", nullable: false),
-                    ResponsavelCodigo = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    ResponsavelCodigo = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -283,6 +286,30 @@ namespace se_api.Migrations
                         name: "FK_Nota_Matriculas_MatriculaCodigo",
                         column: x => x.MatriculaCodigo,
                         principalTable: "Matriculas",
+                        principalColumn: "Codigo",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SerieDisciplina",
+                columns: table => new
+                {
+                    CodSerie = table.Column<int>(type: "int", nullable: false),
+                    CodDisciplina = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SerieDisciplina", x => new { x.CodDisciplina, x.CodSerie });
+                    table.ForeignKey(
+                        name: "FK_SerieDisciplina_Disciplinas_CodDisciplina",
+                        column: x => x.CodDisciplina,
+                        principalTable: "Disciplinas",
+                        principalColumn: "Codigo",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_SerieDisciplina_Series_CodSerie",
+                        column: x => x.CodSerie,
+                        principalTable: "Series",
                         principalColumn: "Codigo",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -338,6 +365,11 @@ namespace se_api.Migrations
                 column: "AlunoRegistro");
 
             migrationBuilder.CreateIndex(
+                name: "IX_SerieDisciplina_CodSerie",
+                table: "SerieDisciplina",
+                column: "CodSerie");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Telefones_ResponsavelCodigo",
                 table: "Telefones",
                 column: "ResponsavelCodigo");
@@ -359,16 +391,19 @@ namespace se_api.Migrations
                 name: "Nota");
 
             migrationBuilder.DropTable(
+                name: "SerieDisciplina");
+
+            migrationBuilder.DropTable(
                 name: "Telefones");
 
             migrationBuilder.DropTable(
                 name: "Usuarios");
 
             migrationBuilder.DropTable(
-                name: "Disciplinas");
+                name: "Matriculas");
 
             migrationBuilder.DropTable(
-                name: "Matriculas");
+                name: "Disciplinas");
 
             migrationBuilder.DropTable(
                 name: "Responsaveis");

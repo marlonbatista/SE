@@ -134,3 +134,10 @@ se-api/se-api/_NCrunch*
 
 # Arquivo de configuração do bd
 ./se-api/se-api/Context/Config/Setting.cs
+se-api/.vs/se-api/DesignTimeBuild/.dtbcache.v2
+se-api/.vs/se-api/v17/.futdcache.v1
+se-api/.vs/se-api/v17/.suo
+se-api/se-api/DAL/Context/Config/Setting.cs
+se-api/se-api/obj/Debug/net6.0/project.razor.json
+se-api/se-api/obj/Debug/net6.0/se-api.assets.cache
+se-api/se-api/obj/Debug/net6.0/se-api.GeneratedMSBuildEditorConfig.editorconfig

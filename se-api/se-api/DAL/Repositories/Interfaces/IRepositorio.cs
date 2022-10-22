@@ -3,7 +3,7 @@
     public interface IRepositorio<T>
     {
         T ObterPorId(int id);
-        T ObterTodos();
+        List<T> ObterTodos();
         void Inserir(T dados);
         T Alterar(T dados);
     }

@@ -29,6 +29,13 @@ import { FormAlunoMatriculaComponent } from './components/form-aluno-matricula/f
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { RedefinirSenhaComponent } from './components/redefinir-senha/redefinir-senha.component';
 import { FormOrganizacionalDisciplinaComponent } from './components/form-organizacional-disciplina/form-organizacional-disciplina.component';
+import { FormUsuarioComponent } from './components/form-usuario/form-usuario.component';
+import { FormRelatorioAlunoComponent } from './components/form-relatorio-aluno/form-relatorio-aluno.component';
+import { FormRelatorioTurmaComponent } from './components/form-relatorio-turma/form-relatorio-turma.component';
+import { FormRelatorioSerieComponent } from './components/form-relatorio-serie/form-relatorio-serie.component';
+import { FormRelatorioLivroComponent } from './components/form-relatorio-livro/form-relatorio-livro.component';
+import { FormOrganizacionalSerieComponent } from './components/form-organizacional-serie/form-organizacional-serie.component';
+import { FormOrganizacionalTurmaComponent } from './components/form-organizacional-turma/form-organizacional-turma.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +52,14 @@ import { FormOrganizacionalDisciplinaComponent } from './components/form-organiz
     FormAlunoMatriculaComponent,
     PerfilComponent,
     RedefinirSenhaComponent,
-    FormOrganizacionalDisciplinaComponent
+    FormOrganizacionalDisciplinaComponent,
+    FormUsuarioComponent,
+    FormRelatorioAlunoComponent,
+    FormRelatorioTurmaComponent,
+    FormRelatorioSerieComponent,
+    FormRelatorioLivroComponent,
+    FormOrganizacionalSerieComponent,
+    FormOrganizacionalTurmaComponent
   ],
   imports: [
     BrowserModule,

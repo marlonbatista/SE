@@ -24,7 +24,7 @@ export class FormAlunoDesempenhoComponent implements OnInit {
     {valor: 0, texto: "Arte"},
     {valor: 1, texto: "Matemática"},
     {valor: 2, texto: "Português"},
-  ]
+  ];
 
   codigo!: number;
   nota!: number;

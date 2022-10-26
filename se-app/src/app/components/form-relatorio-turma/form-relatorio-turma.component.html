@@ -1,0 +1,28 @@
+<form>
+    <mat-form-field class="form-field" appearance="outline" color="accent">
+        <mat-label>Série</mat-label>
+        <mat-select id="selAcao" [(ngModel)]="serie" name="acao">
+            <mat-option *ngFor="let serie of series" [value]="serie.valor"> {{serie.texto}} </mat-option>
+        </mat-select>
+        <mat-hint>Hint</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field class="form-field" appearance="outline" color="accent">
+        <mat-label>Turma</mat-label>
+        <mat-select id="selAcao" [(ngModel)]="turma" name="acao">
+            <mat-option *ngFor="let turma of turmas" [value]="turma.valor"> {{turma.texto}} </mat-option>
+        </mat-select>
+        <mat-hint>Hint</mat-hint>
+    </mat-form-field>
+
+
+    <div class="form-field-button">
+        <button mat-flat-button type="submit" color="accent"> 
+            Imprimir
+        </button>
+
+        <button mat-flat-button type="reset" color="warn"> 
+            Cancelar
+        </button>
+    </div>
+</form>

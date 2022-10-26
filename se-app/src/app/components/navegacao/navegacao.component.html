@@ -10,56 +10,28 @@
 
         <button mat-button [matMenuTriggerFor]="organizacional">Organizacional</button>
         <mat-menu #organizacional="matMenu">
-            <a mat-menu-item routerLink="">Série</a>
-            <a mat-menu-item routerLink="">Turma</a>
+            <a mat-menu-item routerLink="/organizacional-serie">Série</a>
+            <a mat-menu-item routerLink="/organizacional-turma">Turma</a>
             <a mat-menu-item routerLink="/organizacional-disciplina">Disciplina</a>
         </mat-menu>
 
         <button mat-button [matMenuTriggerFor]="relatorio">Relatório</button>
         <mat-menu #relatorio="matMenu">
-            <a mat-menu-item routerLink="">Livro de Notas</a>
-            <a mat-menu-item routerLink="">Por Série</a>
-            <a mat-menu-item routerLink="">Por Turma</a>
-            <a mat-menu-item routerLink="">Por Aluno</a>
+            <a mat-menu-item routerLink="/relatorio-aluno">Por Aluno</a>
+            <a mat-menu-item routerLink="/relatorio-turma">Por Turma</a>
+            <a mat-menu-item routerLink="/relatorio-serie">Por Série</a>
+            <a mat-menu-item routerLink="/relatorio-livro">Livro de Notas</a>
         </mat-menu>
     </div>
-    <!-- <ul *ngIf="userConected">
-        <li> 
-            <span> Aluno </span>  
-            <ul class="sublista">
-                <li><a href="">Registro</a></li>
-                <li><a href="">Matrícula</a></li>
-                <li><a href="">Boletim</a></li>
-            </ul>
-        </li>
-        <li> 
-            <span> Organizacional </span> 
-            <ul class="sublista">
-                <li><a href="">Série</a></li>
-                <li><a href="">Turma</a></li>
-                <li><a href=""> Disciplina</a></li>
-            </ul>
-        </li>
-        <li>  
-            <span> Reatórios </span>
-            <ul class="sublista">
-                <li><a href="">Livro de Notas</a></li>
-                <li><a href="">Por Série</a></li>
-                <li><a href="">Por Turma</a></li>
-                <li><a href="">Por Aluno</a></li>
-            </ul>
-        </li>
-    </ul> -->
 
     <a mat-button [matMenuTriggerFor]="usuario" *ngIf="conected; else userNotConected">Usuário</a>
     <mat-menu #usuario="matMenu">
         <a mat-menu-item routerLink="/perfil">Perfil</a>
-        <a mat-menu-item *ngIf="admin">Usuários</a>
+        <a mat-menu-item *ngIf="admin" routerLink="/usuario">Usuários</a>
         <mat-divider></mat-divider>
         <a mat-menu-item routerLink="/login">Sair</a>
     </mat-menu>
     <ng-template #userNotConected>
         <a mat-button routerLink="/login">Entrar</a>
     </ng-template>
-    <!-- <a href="">Entrar</a> -->
 </nav>

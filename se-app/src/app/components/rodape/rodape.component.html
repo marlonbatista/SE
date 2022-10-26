@@ -24,18 +24,18 @@
         <div *ngIf="conected">
             <h3>Organizacional</h3>
             <ul>
-                <li><a mat-button routerLink="">Série</a></li>
-                <li><a mat-button routerLink="">Turma</a></li>
+                <li><a mat-button routerLink="/organizacional-serie">Série</a></li>
+                <li><a mat-button routerLink="/organizacional-turma">Turma</a></li>
                 <li><a mat-button routerLink="/organizacional-disciplina">Disciplina</a></li>
             </ul>
         </div>
         <div *ngIf="conected">
             <h3>Relatório</h3>
             <ul>
-                <li><a mat-button routerLink="">Livro de Notas</a></li>
-                <li><a mat-button routerLink="">Por Série</a></li>
-                <li><a mat-button routerLink="">Por Turma</a></li>
-                <li><a mat-button routerLink="">Por Aluno</a></li>
+                <li><a mat-button routerLink="/relatorio-aluno">Por Aluno</a></li>
+                <li><a mat-button routerLink="/relatorio-turma">Por Turma</a></li>
+                <li><a mat-button routerLink="/relatorio-serie">Por Série</a></li>
+                <li><a mat-button routerLink="/relatorio-livro">Livro de Notas</a></li>
             </ul>
         </div>
     </div>

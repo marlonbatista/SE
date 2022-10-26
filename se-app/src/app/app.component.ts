@@ -11,7 +11,7 @@ import { filter, map, switchMap } from 'rxjs';
 export class AppComponent {
 
   userConected: boolean = true;
-  userAdmin: boolean = false;
+  userAdmin: boolean = true;
 
   // title = 'Projeto S.E.';
 

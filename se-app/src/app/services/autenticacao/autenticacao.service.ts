@@ -13,7 +13,7 @@ export class AutenticacaoService {
 
   constructor(public http: HttpClient) { }
 
-  login(login: string, senha: string): Observable<AutenticacaoResposta> {
-    return this.http.post<AutenticacaoResposta>(`${environment.url_api}autencicacao`, { login, senha });
+  login(Login: string, Senha: string): Observable<AutenticacaoResposta> {
+    return this.http.post<AutenticacaoResposta>(`${environment.url_api}autenticacao`, { Login, Senha });
   }
 }

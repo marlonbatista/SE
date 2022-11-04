@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using se_api.Commands;
@@ -9,6 +10,7 @@ using se_api.Service;
 namespace se_api.Controller
 {
     [ApiController]
+    [EnableCors("_seapi")]
     [Route("autenticacao")]
     [AllowAnonymous]
     public class AutenticacaoController : ControllerBase

@@ -18,20 +18,12 @@ namespace se_api.Models
         public DateTime DataFim { get; set; }
         [Required(ErrorMessage = "Necessario informa se ativo ou não")]
         public bool Ativo  { get; set; }
+        [ForeignKey("Turma")]
+        public int CodTurma { get; set; }
+        public Turma Turma { get; set; }
 
         public Matricula()
         {
-        }
-
-        public Matricula(int codigo, int registroAluno, Aluno aluno, int numero, DateTime dataInicio, DateTime dataFim, bool ativo)
-        {
-            Codigo = codigo;
-            RegistroAluno = registroAluno;
-            Aluno = aluno;
-            Numero = numero;
-            DataInicio = dataInicio;
-            DataFim = dataFim;
-            Ativo = ativo;
         }
     }
 }

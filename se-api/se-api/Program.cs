@@ -15,7 +15,11 @@ builder.Services.AddCors(options =>
     options.AddPolicy(name: Origens,
             policy =>
             {
-                policy.WithOrigins("*");
+                policy.SetIsOriginAllowedToAllowWildcardSubdomains()
+                      .AllowAnyHeader()
+                      .AllowAnyMethod()
+                      .WithOrigins("*")
+                      .Build();
             }
         );
 });

@@ -15,6 +15,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CabecalhoComponent } from './components/cabecalho/cabecalho.component';
 import { NavegacaoComponent } from './components/navegacao/navegacao.component';
@@ -65,6 +66,7 @@ import { FormOrganizacionalTurmaComponent } from './components/form-organizacion
     BrowserModule,
     FormsModule,
     AppRoutingModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     MatMenuModule,
     MatButtonModule,

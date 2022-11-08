@@ -1,4 +1,5 @@
-﻿using se_api.Models;
+﻿using se_api.Controller.DTO.Entrada;
+using se_api.Models;
 
 namespace se_api.DAL.Repositories.Interfaces
 {

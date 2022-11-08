@@ -10,8 +10,7 @@ namespace se_api.Models
         public List<Telefone> Telefones { get; set; }
         [Required(ErrorMessage = "Necessario informa se é contrantante")]
         public bool Contrante { get; set; }
-        [Required(ErrorMessage = "Necessario informa o tipo do responsavel")]
-
+        [ForeignKey("Aluno")]
         public int RegistroAluno { get; set; }
         public Aluno Aluno { get; set; }
 

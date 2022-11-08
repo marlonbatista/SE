@@ -1,18 +1,22 @@
-<form>
+<form (ngSubmit)="onSubmit()" [formGroup]="turmaRelatorioForm" #formDir="ngForm">
     <mat-form-field class="form-field" appearance="outline" color="accent">
         <mat-label>Série</mat-label>
-        <mat-select id="selAcao" [(ngModel)]="serie" name="acao">
+        <mat-select name="serie" formControlName="serie" required >
             <mat-option *ngFor="let serie of series" [value]="serie.valor"> {{serie.texto}} </mat-option>
         </mat-select>
-        <mat-hint>Hint</mat-hint>
+        <mat-error *ngIf="turmaRelatorioForm.get('serie')?.errors?.['required']">
+            Este campo é <strong>Obrigatório</strong>
+        </mat-error>
     </mat-form-field>
 
     <mat-form-field class="form-field" appearance="outline" color="accent">
         <mat-label>Turma</mat-label>
-        <mat-select id="selAcao" [(ngModel)]="turma" name="acao">
+        <mat-select name="turma" formControlName="turma" required >
             <mat-option *ngFor="let turma of turmas" [value]="turma.valor"> {{turma.texto}} </mat-option>
         </mat-select>
-        <mat-hint>Hint</mat-hint>
+        <mat-error *ngIf="turmaRelatorioForm.get('turma')?.errors?.['required']">
+            Este campo é <strong>Obrigatório</strong>
+        </mat-error>
     </mat-form-field>
 
 
@@ -21,7 +25,7 @@
             Imprimir
         </button>
 
-        <button mat-flat-button type="reset" color="warn"> 
+        <button mat-flat-button type="reset" (click)="onReset()" color="warn"> 
             Cancelar
         </button>
     </div>

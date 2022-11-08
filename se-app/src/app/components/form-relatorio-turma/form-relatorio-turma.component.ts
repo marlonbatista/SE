@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { InformacaoService } from 'src/app/services/informacao/informacao.service';
 
 @Component({
   selector: 'app-form-relatorio-turma',
@@ -7,8 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormRelatorioTurmaComponent implements OnInit {
 
-  serie!: number;
-  turma!: number;
+  turmaRelatorioForm!: FormGroup;
 
   series = [
     {valor: 0, texto: "1"},
@@ -22,9 +23,32 @@ export class FormRelatorioTurmaComponent implements OnInit {
     {valor: 2, texto: "C"},
   ];
 
-  constructor() { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private informacaoService: InformacaoService,
+  ) { }
 
   ngOnInit(): void {
+    this.turmaRelatorioForm = this.formBuilder.group({
+      serie: ['', [Validators.required]],
+      turma: ['', [Validators.required]],
+    });
+  }
+
+  onSubmit() {
+    if(this.turmaRelatorioForm.invalid) {
+      window.scrollTo(0, 0);
+      this.informacaoService.add('Preencha os campos obrigatórios', 'danger');
+      return;
+    }
+
+    this.informacaoService.add('Tudo certo!', 'success');
+    // this.informacaoService.remove();
+    console.log(this.turmaRelatorioForm.value);
+  }
+
+  onReset () {
+    window.location.href = "";
   }
 
 }

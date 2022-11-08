@@ -1,10 +1,12 @@
-<form>
+<form (ngSubmit)="onSubmit()" [formGroup]="serieRelatorioForm" #formDir="ngForm">
     <mat-form-field class="form-field" appearance="outline" color="accent">
         <mat-label>Série</mat-label>
-        <mat-select id="selAcao" [(ngModel)]="serie" name="acao">
+        <mat-select name="acao" formControlName="serie" required >
             <mat-option *ngFor="let serie of series" [value]="serie.valor"> {{serie.texto}} </mat-option>
         </mat-select>
-        <mat-hint>Hint</mat-hint>
+        <mat-error *ngIf="serieRelatorioForm.get('serie')?.errors?.['required']">
+            Este campo é <strong>Obrigatório</strong>
+        </mat-error>
     </mat-form-field>
 
     <div class="form-field-button">
@@ -12,7 +14,7 @@
             Imprimir
         </button>
 
-        <button mat-flat-button type="reset" color="warn"> 
+        <button mat-flat-button type="reset" (click)="onReset()" color="warn"> 
             Cancelar
         </button>
     </div>

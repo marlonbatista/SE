@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { InformacaoService } from 'src/app/services/informacao/informacao.service';
 
 @Component({
   selector: 'app-info-card',
@@ -6,8 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./info-card.component.scss']
 })
 export class InfoCardComponent implements OnInit {
+InformacaoService: any;
 
-  constructor() { }
+  constructor(public informacaoService: InformacaoService) { }
 
   ngOnInit(): void {
   }

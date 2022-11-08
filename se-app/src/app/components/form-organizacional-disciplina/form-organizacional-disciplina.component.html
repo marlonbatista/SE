@@ -1,28 +1,36 @@
-<form>
+<form (ngSubmit)="onSubmit()" [formGroup]="disciplinaOrganizacionalForm" #formDir="ngForm">
     <mat-form-field class="form-field" appearance="outline" color="accent">
         <mat-label>Ação</mat-label>
-        <mat-select id="selAcao" [(ngModel)]="acao" name="acao">
+        <mat-select id="selAcao" name="acao" formControlName="acao" required >
             <mat-option *ngFor="let acao of acoes" [value]="acao.valor"> {{acao.texto}} </mat-option>
         </mat-select>
-        <mat-hint>Hint</mat-hint>
+        <mat-error *ngIf="disciplinaOrganizacionalForm.get('acao')?.errors?.['required']">
+            Este campo é <strong>Obrigatório</strong>
+        </mat-error>
     </mat-form-field>
     
     <mat-form-field class="form-field" appearance="outline" color="accent">
         <mat-label>Código</mat-label>
-        <input matInput type="number" [(ngModel)]="codigo" name="codigo" placeholder="Ex.: joaosilva@email.com">
-        <mat-hint>Hint</mat-hint>
+        <input matInput type="number"  name="codigo" placeholder="Ex.: 1" formControlName="codigo" required />
+        <mat-error *ngIf="disciplinaOrganizacionalForm.get('codigo')?.errors?.['required']">
+            Este campo é <strong>Obrigatório</strong>
+        </mat-error>
     </mat-form-field>
 
     <mat-form-field class="form-field" appearance="outline" color="accent">
         <mat-label>Nome</mat-label>
-        <input matInput [(ngModel)]="nome" name="nome" placeholder="Ex.: joaosilva@email.com">
-        <mat-hint>Hint</mat-hint>
+        <input matInput name="nome" placeholder="Ex.: Matemática" formControlName="nome" required />
+        <mat-error *ngIf="disciplinaOrganizacionalForm.get('nome')?.errors?.['required']">
+            Este campo é <strong>Obrigatório</strong>
+        </mat-error>
     </mat-form-field>
 
     <mat-form-field class="form-field" appearance="outline" color="accent">
         <mat-label>Carga Horária</mat-label>
-        <input matInput type="number" [(ngModel)]="cargaHoraria" name="cargaHoraria" placeholder="Ex.: joaosilva@email.com">
-        <mat-hint>Hint</mat-hint>
+        <input matInput type="number" name="cargaHoraria" placeholder="Ex.: 80" formControlName="cargaHoraria" required />
+        <mat-error *ngIf="disciplinaOrganizacionalForm.get('cargaHoraria')?.errors?.['required']">
+            Este campo é <strong>Obrigatório</strong>
+        </mat-error>
     </mat-form-field>
     
     <div class="form-field-button">
@@ -30,7 +38,7 @@
             Salvar
         </button>
 
-        <button mat-flat-button type="reset" color="warn"> 
+        <button mat-flat-button type="reset" (click)="onReset()" color="warn"> 
             Cancelar
         </button>
     </div>

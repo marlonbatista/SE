@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
+import { InformacaoService } from 'src/app/services/informacao/informacao.service';
 
 @Component({
   selector: 'app-form-relatorio-aluno',
@@ -7,11 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormRelatorioAlunoComponent implements OnInit {
 
-  codigo!: number;
-  nome: string = "";
-  sobrenome: string = "";
-  serie!: number;
-  turma!: number;
+  alunoRelatorioForm!: FormGroup;
 
   series = [
     {valor: 0, texto: "1"},
@@ -25,9 +23,35 @@ export class FormRelatorioAlunoComponent implements OnInit {
     {valor: 2, texto: "C"},
   ];
 
-  constructor() { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private informacaoService: InformacaoService,
+  ) { }
 
   ngOnInit(): void {
+    this.alunoRelatorioForm = this.formBuilder.group({
+      codigo: ['', [Validators.required]],
+      nome: ['', [Validators.required]],
+      sobrenome: ['', [Validators.required]],
+      serie: ['', [Validators.required]],
+      turma: ['', [Validators.required]],
+    });
+  }
+
+  onSubmit() {
+    if(this.alunoRelatorioForm.invalid) {
+      window.scrollTo(0, 0);
+      this.informacaoService.add('Preencha os campos obrigatórios', 'danger');
+      return;
+    }
+
+    this.informacaoService.add('Tudo certo!', 'success');
+    // this.informacaoService.remove();
+    console.log(this.alunoRelatorioForm.value);
+  }
+
+  onReset () {
+    window.location.href = "";
   }
 
 }

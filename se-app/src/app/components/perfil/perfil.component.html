@@ -1,44 +1,72 @@
-<form>
+<form (ngSubmit)="onSubmit()" [formGroup]="perfilForm" #formDir="ngForm">
     <mat-form-field class="form-field" appearance="outline" color="accent">
         <mat-label>Nome</mat-label>
-        <input matInput [(ngModel)]="nome" name="nome" placeholder="Ex.: João">
-        <mat-hint>Hint</mat-hint>
+        <input matInput name="nome" placeholder="Ex.: João" formControlName="nome" required />
+        <mat-error *ngIf="perfilForm.get('nome')?.errors?.['required']">
+            Este campo é <strong>Obrigatório</strong>
+        </mat-error>
     </mat-form-field>
 
     <mat-form-field class="form-field" appearance="outline" color="accent">
         <mat-label>Sobrenome</mat-label>
-        <input matInput [(ngModel)]="sobrenome" name="sobrenome" placeholder="Ex.: Silva">
-        <mat-hint>Hint</mat-hint>
+        <input matInput name="sobrenome" placeholder="Ex.: Silva" formControlName="sobrenome" required />
+        <mat-error *ngIf="perfilForm.get('sobrenome')?.errors?.['required']">
+            Este campo é <strong>Obrigatório</strong>
+        </mat-error>
     </mat-form-field>
 
     <mat-form-field class="form-field" appearance="outline" color="accent">
         <mat-label>C.P.F. (Apenas Números)</mat-label>
-        <input  matInput type="number"[(ngModel)]="cpf" name="cpf" placeholder="Ex.: 00000000000">
-        <mat-hint>Hint</mat-hint>
+        <input  matInput type="number" name="cpf" placeholder="Ex.: 00000000000" formControlName="cpf" required />
+        <mat-error *ngIf="perfilForm.get('cpf')?.errors?.['required']">
+            Este campo é <strong>Obrigatório</strong>
+        </mat-error>
     </mat-form-field>
 
     <mat-form-field class="form-field" appearance="outline" color="accent">
         <mat-label>R.G. (Apenas Números)</mat-label>
-        <input matInput type="number" [(ngModel)]="rg" name="rg" placeholder="Ex.: 000000000">
-        <mat-hint>Hint</mat-hint>
+        <input matInput type="number" name="rg" placeholder="Ex.: 000000000" formControlName="rg" required />
+        <mat-error *ngIf="perfilForm.get('rg')?.errors?.['required']">
+            Este campo é <strong>Obrigatório</strong>
+        </mat-error>
     </mat-form-field>
 
     <mat-form-field class="form-field" appearance="outline" color="accent">
         <mat-label>E-mail</mat-label>
-        <input matInput type="email" [(ngModel)]="email" name="email" placeholder="Ex.: joaosilva@email.com">
-        <mat-hint>Hint</mat-hint>
+        <input matInput type="email" name="email" placeholder="Ex.: joaosilva@email.com" formControlName="email" required />
+        <mat-error *ngIf="perfilForm.get('email')?.errors?.['email']">
+            isto não é um <strong>E-mail</strong>
+        </mat-error>
+        <mat-error *ngIf="perfilForm.get('email')?.errors?.['required']">
+            Este campo é <strong>Obrigatório</strong>
+        </mat-error>
     </mat-form-field>
 
     <mat-form-field class="form-field" appearance="outline" color="accent">
         <mat-label>Nova Senha</mat-label>
-        <input matInput type="password" [(ngModel)]="novaSenha" name="novaSenha" >
+        <input matInput type="password" name="novaSenha" formControlName="novaSenha" minlength="8" />
         <mat-hint>Deve conter no mínimo 8 caracteres</mat-hint>
+        <mat-error *ngIf="perfilForm.get('novaSenha')?.errors?.['required']">
+            Este campo é <strong>Obrigatório</strong>
+        </mat-error>
+        <mat-error *ngIf="perfilForm.get('novaSenha')?.errors?.['minlength']">
+            A senha deve conter no mínimo <strong>8 caracteres</strong>
+        </mat-error>
     </mat-form-field>
 
     <mat-form-field class="form-field" appearance="outline" color="accent">
         <mat-label>Confirme Nova Senha</mat-label>
-        <input matInput type="password" [(ngModel)]="confirmaSenha" name="confirmaSenha">
+        <input matInput type="password" name="confirmaSenha" formControlName="ConfirNovaSenha" />
         <mat-hint>Digite a mesma senha do campo anterior</mat-hint>
+        <mat-error *ngIf="perfilForm.get('ConfirNovaSenha')?.errors?.['required']">
+            Este campo é <strong>Obrigatório</strong>
+        </mat-error>
+        <mat-error *ngIf="perfilForm.get('ConfirNovaSenha')?.errors?.['minlength']">
+            A senha deve conter no mínimo <strong>8 caracteres</strong>
+        </mat-error>
+        <mat-error *ngIf="perfilForm.get('ConfirNovaSenha')?.errors">
+            As senhas <strong>não</strong> correspondem
+        </mat-error>
     </mat-form-field>
 
     <mat-divider></mat-divider>
@@ -46,8 +74,10 @@
 
     <mat-form-field class="form-field" appearance="outline" color="accent">
         <mat-label>Senha atual</mat-label>
-        <input matInput type="password" [(ngModel)]="senhaAtual" name="senhaAtual" placeholder="Digite a senha atual para confirmar as alterações feitas">
-        <mat-hint>Hint</mat-hint>
+        <input matInput type="password" name="senhaAtual" placeholder="Digite a senha atual para confirmar as alterações feitas" formControlName="senhaAtual" required />
+        <mat-error *ngIf="perfilForm.get('senhaAtual')?.errors?.['required']">
+            Este campo é <strong>Obrigatório</strong>
+        </mat-error>
     </mat-form-field>
 
     <div class="form-field-button">
@@ -55,7 +85,7 @@
             Salvar
         </button>
         
-        <button mat-flat-button type="reset" color="warn"> 
+        <button mat-flat-button type="reset" (click)="onReset()" color="warn"> 
             Cancelar
         </button>
     </div>

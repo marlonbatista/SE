@@ -1,60 +1,85 @@
-<form>
+<form (ngSubmit)="onSubmit()" [formGroup]="usuarioForm" #formDir="ngForm">
     <mat-form-field class="form-field" appearance="outline" color="accent">
         <mat-label>Ação</mat-label>
-        <mat-select [(ngModel)]="acao" name="acao">
+        <mat-select #selAcao name="acao" formControlName="acao" (valueChange)="liberaCodigo(selAcao.value)" required >
             <mat-option *ngFor="let acao of acoes" [value]="acao.valor"> {{acao.texto}} </mat-option>
         </mat-select>
-        <mat-hint>Hint</mat-hint>
+        <mat-error *ngIf="usuarioForm.get('acao')?.errors?.['required']">
+            Este campo é <strong>Obrigatório</strong>
+        </mat-error>
     </mat-form-field>
 
     <mat-form-field class="form-field" appearance="outline" color="accent">
         <mat-label>Código</mat-label>
-        <input matInput type="number" [(ngModel)]="codigo" name="codigo" placeholder="Ex.: 1">
-        <mat-hint>Hint</mat-hint>
+        <input matInput type="number" name="codigo" placeholder="Ex.: 1" formControlName="codigo" required />
+        <mat-error *ngIf="usuarioForm.get('codigo')?.errors?.['required']">
+            Este campo é <strong>Obrigatório</strong>
+        </mat-error>
     </mat-form-field>
 
     <mat-form-field class="form-field" appearance="outline" color="accent">
         <mat-label>Nome</mat-label>
-        <input matInput [(ngModel)]="nome" name="nome" placeholder="Ex.: João">
-        <mat-hint>Hint</mat-hint>
+        <input matInput name="nome" placeholder="Ex.: João" formControlName="nome" required />
+        <mat-error *ngIf="usuarioForm.get('nome')?.errors?.['required']">
+            Este campo é <strong>Obrigatório</strong>
+        </mat-error>
     </mat-form-field>
 
     <mat-form-field class="form-field" appearance="outline" color="accent">
         <mat-label>Sobrenome</mat-label>
-        <input matInput [(ngModel)]="sobrenome" name="sobrenome" placeholder="Ex.: Silva">
-        <mat-hint>Hint</mat-hint>
+        <input matInput name="sobrenome" placeholder="Ex.: Silva" formControlName="sobrenome" required />
+        <mat-error *ngIf="usuarioForm.get('sobrenome')?.errors?.['required']">
+            Este campo é <strong>Obrigatório</strong>
+        </mat-error>
     </mat-form-field>
 
     <mat-form-field class="form-field" appearance="outline" color="accent">
         <mat-label>C.P.F. (Apenas Números)</mat-label>
-        <input  matInput type="number"[(ngModel)]="cpf" name="cpf" placeholder="Ex.: 00000000000">
-        <mat-hint>Hint</mat-hint>
+        <input  matInput type="number" name="cpf" placeholder="Ex.: 00000000000" formControlName="cpf" required />
+        <mat-error *ngIf="usuarioForm.get('cpf')?.errors?.['required']">
+            Este campo é <strong>Obrigatório</strong>
+        </mat-error>
     </mat-form-field>
 
     <mat-form-field class="form-field" appearance="outline" color="accent">
         <mat-label>R.G (Apenas Números)</mat-label>
-        <input matInput type="number" [(ngModel)]="rg" name="rg" placeholder="Ex.: 000000000">
-        <mat-hint>Hint</mat-hint>
+        <input matInput type="number" name="rg" placeholder="Ex.: 000000000" formControlName="rg" required />
+        <mat-error *ngIf="usuarioForm.get('rg')?.errors?.['required']">
+            Este campo é <strong>Obrigatório</strong>
+        </mat-error>
     </mat-form-field>
 
     <mat-form-field class="form-field" appearance="outline" color="accent">
         <mat-label>E-mail</mat-label>
-        <input matInput type="email" [(ngModel)]="email" name="email" placeholder="Ex.: joaosilva@email.com">
-        <mat-hint>Hint</mat-hint>
+        <input matInput type="email" name="email" placeholder="Ex.: joaosilva@email.com" formControlName="email" required />
+        <mat-error *ngIf="usuarioForm.get('email')?.errors?.['required']">
+            Este campo é <strong>Obrigatório</strong>
+        </mat-error>
+        <mat-error *ngIf="usuarioForm.get('email')?.errors?.['email']">
+            Isto não é um <strong>email</strong>
+        </mat-error>
     </mat-form-field>
 
     <mat-form-field class="form-field" appearance="outline" color="accent">
         <mat-label>Senha</mat-label>
-        <input matInput type="password" [(ngModel)]="senha" name="senha">
-        <mat-hint>Hint</mat-hint>
+        <input matInput type="password" name="senha" formControlName="senha" minlength="8" required />
+        <mat-hint>A senha deve conter no mínimo 8 caracteres</mat-hint>
+        <mat-error *ngIf="usuarioForm.get('senha')?.errors?.['required']">
+            Este campo é <strong>Obrigatório</strong>
+        </mat-error>
+        <mat-error *ngIf="usuarioForm.get('senha')?.errors?.['minlength']">
+            A senha deve conter no mínimo <strong>8 caracteres</strong>
+        </mat-error>
     </mat-form-field>
 
     <mat-form-field class="form-field" appearance="outline" color="accent">
         <mat-label>Tipo de Usuário</mat-label>
-        <mat-select [(ngModel)]="tipo" name="tipoUsuario">
+        <mat-select name="tipoUsuario" formControlName="tipoUsuario" required >
             <mat-option *ngFor="let tipo of tipos" [value]="tipo.valor"> {{tipo.texto}} </mat-option>
         </mat-select>
-        <mat-hint>Hint</mat-hint>
+        <mat-error *ngIf="usuarioForm.get('tipoUsuario')?.errors?.['required']">
+            Este campo é <strong>Obrigatório</strong>
+        </mat-error>
     </mat-form-field>
 
     <div class="form-field-button">
@@ -62,7 +87,7 @@
             Salvar
         </button>
 
-        <button mat-flat-button type="reset" color="warn"> 
+        <button mat-flat-button type="reset" (click)="onReset()" color="warn"> 
             Cancelar
         </button>
     </div>

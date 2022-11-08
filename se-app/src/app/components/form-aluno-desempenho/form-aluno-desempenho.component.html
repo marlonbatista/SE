@@ -1,67 +1,90 @@
-<form>
+<form (ngSubmit)="onSubmit()" [formGroup]="desempenhoAlunoForm" #formDir="ngForm">
     <mat-form-field class="form-field" appearance="outline" color="accent">
         <mat-label>Ano</mat-label>
-        <input matInput type="number" [(ngModel)]="ano" name="ano" placeholder="Ex.: 2020">
-        <mat-hint>Hint</mat-hint>
+        <input matInput type="number" name="ano" placeholder="Ex.: 2020" formControlName="ano" required />
+        <mat-error *ngIf="desempenhoAlunoForm.get('ano')?.errors?.['required']">
+            Este campo é <strong>Obrigatório</strong>
+        </mat-error>
     </mat-form-field>
 
     <mat-form-field class="form-field" appearance="outline" color="accent">
         <mat-label>Série</mat-label>
-        <input matInput type="number" [(ngModel)]="serie" name="serie" placeholder="Ex.: 6">
-        <mat-hint>Hint</mat-hint>
+        <input matInput type="number" name="serie" placeholder="Ex.: 6" formControlName="serie" required />
+        <mat-error *ngIf="desempenhoAlunoForm.get('serie')?.errors?.['required']">
+            Este campo é <strong>Obrigatório</strong>
+        </mat-error>
     </mat-form-field>
 
     <mat-form-field class="form-field" appearance="outline" color="accent">
         <mat-label>Turma</mat-label>
-        <input matInput [(ngModel)]="turma" name="turma" placeholder="Ex.: A" maxlength="1">
-        <mat-hint>Hint</mat-hint>
+        <input matInput name="turma" placeholder="Ex.: A" maxlength="1" formControlName="turma" required />
+        <mat-error *ngIf="desempenhoAlunoForm.get('turma')?.errors?.['required']">
+            Este campo é <strong>Obrigatório</strong>
+        </mat-error>
     </mat-form-field>
 
     <mat-form-field class="form-field" appearance="outline" color="accent">
         <mat-label>Período</mat-label>
-        <mat-select [(ngModel)]="periodo" name="turno">
+        <mat-select name="turno" formControlName="periodo" required >
             <mat-option *ngFor="let periodo of periodos" [value]="periodo.valor"> {{periodo.texto}} </mat-option>
         </mat-select>
-        <mat-hint>Hint</mat-hint>
+        <mat-error *ngIf="desempenhoAlunoForm.get('periodo')?.errors?.['required']">
+            Este campo é <strong>Obrigatório</strong>
+        </mat-error>
     </mat-form-field>
 
     <mat-form-field class="form-field" appearance="outline" color="accent">
-        <mat-label>Disciplinas</mat-label>
-        <mat-select [(ngModel)]="disciplina" name="materia">
+        <mat-label>Disciplina</mat-label>
+        <mat-select name="materia" formControlName="disciplina" required >
             <mat-option *ngFor="let disciplina of disciplinas" [value]="disciplina.valor"> {{disciplina.texto}} </mat-option>
         </mat-select>
-        <mat-hint>Hint</mat-hint>
+        <mat-error *ngIf="desempenhoAlunoForm.get('disciplina')?.errors?.['required']">
+            Este campo é <strong>Obrigatório</strong>
+        </mat-error>
     </mat-form-field>
 
-    <div id="desempenho{{index + 1}}" *ngFor="let desempenho of desempenhoAlunoArray; let index = index">
-        <h2> Desempenho Aluno {{index + 1}} </h2>
+    <div formArrayName="alunos">
+        <div *ngFor="let aluno of alunos().controls; let alunIndex = index" >
+            <div [formGroupName]="alunIndex">
+                <h2> Desempenho Aluno {{alunIndex + 1}} </h2>
+        
+                <mat-form-field class="form-field" appearance="outline" color="accent">
+                    <mat-label>Código</mat-label>
+                    <input type="number" matInput name="codigo" placeholder="Ex.: 543" formControlName="codigo" required />
+                    <mat-error *ngIf="desempenhoAlunoForm.get('alunos')?.get(alunIndex.toString())?.get('codigo')?.errors?.['required']">
+                        Este campo é <strong>Obrigatório</strong>
+                    </mat-error>
+                </mat-form-field>
+        
+                <mat-form-field class="form-field" appearance="outline" color="accent">
+                    <mat-label>Nota</mat-label>
+                    <input type="number" matInput name="nota" placeholder="Ex.: 9" formControlName="nota" required />
+                    <mat-error *ngIf="desempenhoAlunoForm.get('alunos')?.get(alunIndex.toString())?.get('nota')?.errors?.['required']">
+                        Este campo é <strong>Obrigatório</strong>
+                    </mat-error>
+                </mat-form-field>
+        
+                <mat-form-field class="form-field" appearance="outline" color="accent">
+                    <mat-label>Faltas</mat-label>
+                    <input type="number" matInput name="falta" placeholder="Ex.: 3" formControlName="falta" required />
+                    <mat-error *ngIf="desempenhoAlunoForm.get('alunos')?.get(alunIndex.toString())?.get('falta')?.errors?.['required']">
+                        Este campo é <strong>Obrigatório</strong>
+                    </mat-error>
+                </mat-form-field>
 
-        <mat-form-field class="form-field" appearance="outline" color="accent">
-            <mat-label>Código</mat-label>
-            <input type="number" matInput [(ngModel)]="codigo" name="codigo" placeholder="Ex.: 543">
-            <mat-hint>Hint</mat-hint>
-        </mat-form-field>
-
-        <mat-form-field class="form-field" appearance="outline" color="accent">
-            <mat-label>Nota</mat-label>
-            <input type="number" matInput [(ngModel)]="nota" name="nota" placeholder="Ex.: 9">
-            <mat-hint>Hint</mat-hint>
-        </mat-form-field>
-
-        <mat-form-field class="form-field" appearance="outline" color="accent">
-            <mat-label>Faltas</mat-label>
-            <input type="number" matInput [(ngModel)]="falta" name="falta" placeholder="Ex.: 3">
-            <mat-hint>Hint</mat-hint>
-        </mat-form-field>
+                <div class="form-field-button">       
+                    <button mat-stroked-button type="button" (click)="removeAluno(alunIndex)" color="warn"> 
+                        Remover um Aluno
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
+    
 
     <div class="form-field-button">
-        <button mat-stroked-button (click)="adicionarDesempenhoAluno()" color="accent"> 
-            Adicionar Outro Aluno
-        </button>
-
-        <button mat-stroked-button type="button" (click)="removerDesempenhoAluno()" color="warn"> 
-            Remover um Aluno
+        <button mat-stroked-button type="button" (click)="addAluno()" color="accent"> 
+            Adicionar Aluno
         </button>
     </div>
 
@@ -70,7 +93,7 @@
             Salvar
         </button>
         
-        <button mat-flat-button type="reset" color="warn"> 
+        <button mat-flat-button type="reset" (click)="onReset()" color="warn"> 
             Cancelar
         </button>
     </div>

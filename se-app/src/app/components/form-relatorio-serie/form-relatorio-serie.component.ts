@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { InformacaoService } from 'src/app/services/informacao/informacao.service';
 
 @Component({
   selector: 'app-form-relatorio-serie',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormRelatorioSerieComponent implements OnInit {
 
-  serie!: number;
+  serieRelatorioForm!: FormGroup;
 
   series = [
     {valor: 0, texto: "1"},
@@ -15,9 +17,31 @@ export class FormRelatorioSerieComponent implements OnInit {
     {valor: 2, texto: "3"},
   ];
 
-  constructor() { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private informacaoService: InformacaoService,
+  ) { }
 
   ngOnInit(): void {
+    this.serieRelatorioForm = this.formBuilder.group({
+      serie: ['', [Validators.required]],
+    });
+  }
+
+  onSubmit() {
+    if(this.serieRelatorioForm.invalid) {
+      window.scrollTo(0, 0);
+      this.informacaoService.add('Preencha os campos obrigatórios', 'danger');
+      return;
+    }
+
+    this.informacaoService.add('Tudo certo!', 'success');
+    // this.informacaoService.remove();
+    console.log(this.serieRelatorioForm.value);
+  }
+
+  onReset () {
+    window.location.href = "";
   }
 
 }

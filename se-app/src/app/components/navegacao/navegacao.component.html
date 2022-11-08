@@ -24,14 +24,11 @@
         </mat-menu>
     </div>
 
-    <a mat-button [matMenuTriggerFor]="usuario" *ngIf="conected; else userNotConected">Usuário</a>
+    <a mat-button [matMenuTriggerFor]="usuario" *ngIf="conected">Usuário</a>
     <mat-menu #usuario="matMenu">
         <a mat-menu-item routerLink="/perfil">Perfil</a>
         <a mat-menu-item *ngIf="admin" routerLink="/usuario">Usuários</a>
         <mat-divider></mat-divider>
         <a mat-menu-item routerLink="/login">Sair</a>
     </mat-menu>
-    <ng-template #userNotConected>
-        <a mat-button routerLink="/login">Entrar</a>
-    </ng-template>
 </nav>

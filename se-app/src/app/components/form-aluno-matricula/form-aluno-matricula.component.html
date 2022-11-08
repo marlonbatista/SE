@@ -1,54 +1,70 @@
-<form>
+<form (ngSubmit)="onSubmit()" [formGroup]="matriculaAlunoForm" #formDir="ngForm">
     <mat-form-field class="form-field" appearance="outline" color="accent">
         <mat-label>Ação</mat-label>
-        <mat-select id="selAcao" [(ngModel)]="acao" name="acao">
+        <mat-select #selAcao name="acao" formControlName="acao" (valueChange)="liberaCodigo(selAcao.value)">
             <mat-option *ngFor="let acao of acoes" [value]="acao.valor"> {{acao.texto}} </mat-option>
         </mat-select>
-        <mat-hint>Hint</mat-hint>
+        <mat-error *ngIf="matriculaAlunoForm.get('acao')?.errors?.['required']">
+            Este campo é <strong>Obrigatório</strong>
+        </mat-error>
     </mat-form-field>
 
     <mat-form-field class="form-field" appearance="outline" color="accent">
         <mat-label>Código</mat-label>
-        <input type="number" matInput [(ngModel)]="codigo" name="codigo" placeholder="Ex.: 543">
-        <mat-hint>Hint</mat-hint>
+        <input type="number" matInput name="codigo" placeholder="Ex.: 543" formControlName="codigo" required />
+        <mat-error *ngIf="matriculaAlunoForm.get('acao')?.errors?.['required']">
+            Este campo é <strong>Obrigatório</strong>
+        </mat-error>
     </mat-form-field>
 
     <mat-form-field class="form-field" appearance="outline" color="accent">
         <mat-label>Nome</mat-label>
-        <input matInput [(ngModel)]="nome" name="nome" placeholder="Ex.: João">
-        <mat-hint>Hint</mat-hint>
+        <input matInput name="nome" placeholder="Ex.: João" formControlName="nome" required />
+        <mat-error *ngIf="matriculaAlunoForm.get('nome')?.errors?.['required']">
+            Este campo é <strong>Obrigatório</strong>
+        </mat-error>
     </mat-form-field>
 
     <mat-form-field class="form-field" appearance="outline" color="accent">
         <mat-label>Sobrenome</mat-label>
-        <input matInput [(ngModel)]="sobrenome" name="sobrenome" placeholder="Ex.: Silva">
-        <mat-hint>Hint</mat-hint>
+        <input matInput name="sobrenome" placeholder="Ex.: Silva" formControlName="sobrenome" required />
+        <mat-error *ngIf="matriculaAlunoForm.get('sobrenome')?.errors?.['required']">
+            Este campo é <strong>Obrigatório</strong>
+        </mat-error>
     </mat-form-field>
 
     <mat-form-field class="form-field" appearance="outline" color="accent">
         <mat-label>Ano</mat-label>
-        <input matInput type="number" [(ngModel)]="ano" name="ano" placeholder="Ex.: 2020">
-        <mat-hint>Hint</mat-hint>
+        <input matInput type="number" name="ano" placeholder="Ex.: 2020" formControlName="ano" required />
+        <mat-error *ngIf="matriculaAlunoForm.get('ano')?.errors?.['required']">
+            Este campo é <strong>Obrigatório</strong>
+        </mat-error>
     </mat-form-field>
 
     <mat-form-field class="form-field" appearance="outline" color="accent">
         <mat-label>Série</mat-label>
-        <input matInput type="number" [(ngModel)]="serie" name="serie" placeholder="Ex.: 6">
-        <mat-hint>Hint</mat-hint>
+        <input matInput type="number" name="serie" placeholder="Ex.: 6" formControlName="serie" required />
+        <mat-error *ngIf="matriculaAlunoForm.get('serie')?.errors?.['required']">
+            Este campo é <strong>Obrigatório</strong>
+        </mat-error>
     </mat-form-field>
 
     <mat-form-field class="form-field" appearance="outline" color="accent">
         <mat-label>Turma</mat-label>
-        <input matInput [(ngModel)]="turma" name="turma" placeholder="Ex.: A" maxlength="1">
-        <mat-hint>Hint</mat-hint>
+        <input matInput name="turma" placeholder="Ex.: A" maxlength="1" formControlName="turma" required />
+        <mat-error *ngIf="matriculaAlunoForm.get('turma')?.errors?.['required']">
+            Este campo é <strong>Obrigatório</strong>
+        </mat-error>
     </mat-form-field>
 
     <mat-form-field class="form-field" appearance="outline" color="accent">
         <mat-label>Período</mat-label>
-        <mat-select [(ngModel)]="periodo" name="turno">
+        <mat-select name="turno" formControlName="periodo">
             <mat-option *ngFor="let periodo of periodos" [value]="periodo.valor"> {{periodo.texto}} </mat-option>
         </mat-select>
-        <mat-hint>Hint</mat-hint>
+        <mat-error *ngIf="matriculaAlunoForm.get('periodo')?.errors?.['required']">
+            Este campo é <strong>Obrigatório</strong>
+        </mat-error>
     </mat-form-field>
 
     <div class="form-field-button">
@@ -56,7 +72,7 @@
             Salvar
         </button>
         
-        <button mat-flat-button type="reset" color="warn"> 
+        <button mat-flat-button type="reset" (click)="onReset()" color="warn"> 
             Cancelar
         </button>
     </div>

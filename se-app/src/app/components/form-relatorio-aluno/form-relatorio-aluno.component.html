@@ -1,36 +1,46 @@
-<form>
+<form (ngSubmit)="onSubmit()" [formGroup]="alunoRelatorioForm" #formDir="ngForm">
     <mat-form-field class="form-field" appearance="outline" color="accent">
         <mat-label>Código</mat-label>
-        <input matInput type="number" [(ngModel)]="codigo" name="codigo" placeholder="Ex.: 1">
-        <mat-hint>Hint</mat-hint>
+        <input matInput type="number" name="codigo" placeholder="Ex.: 1" formControlName="codigo" required />
+        <mat-error *ngIf="alunoRelatorioForm.get('codigo')?.errors?.['required']">
+            Este campo é <strong>Obrigatório</strong>
+        </mat-error>
     </mat-form-field>
 
     <mat-form-field class="form-field" appearance="outline" color="accent">
         <mat-label>Nome</mat-label>
-        <input matInput [(ngModel)]="nome" name="nome" placeholder="Ex.: João">
-        <mat-hint>Hint</mat-hint>
+        <input matInput name="nome" placeholder="Ex.: João" formControlName="nome" required />
+        <mat-error *ngIf="alunoRelatorioForm.get('nome')?.errors?.['required']">
+            Este campo é <strong>Obrigatório</strong>
+        </mat-error>
     </mat-form-field>
 
     <mat-form-field class="form-field" appearance="outline" color="accent">
         <mat-label>Sobrenome</mat-label>
-        <input matInput [(ngModel)]="sobrenome" name="sobrenome" placeholder="Ex.: Silva">
-        <mat-hint>Hint</mat-hint>
+        <input matInput name="sobrenome" placeholder="Ex.: Silva" formControlName="sobrenome" required />
+        <mat-error *ngIf="alunoRelatorioForm.get('sobrenome')?.errors?.['required']">
+            Este campo é <strong>Obrigatório</strong>
+        </mat-error>
     </mat-form-field>
 
     <mat-form-field class="form-field" appearance="outline" color="accent">
         <mat-label>Série</mat-label>
-        <mat-select id="selAcao" [(ngModel)]="serie" name="acao">
+        <mat-select name="serie" formControlName="serie" required >
             <mat-option *ngFor="let serie of series" [value]="serie.valor"> {{serie.texto}} </mat-option>
         </mat-select>
-        <mat-hint>Hint</mat-hint>
+        <mat-error *ngIf="alunoRelatorioForm.get('serie')?.errors?.['required']">
+            Este campo é <strong>Obrigatório</strong>
+        </mat-error>
     </mat-form-field>
 
     <mat-form-field class="form-field" appearance="outline" color="accent">
         <mat-label>Turma</mat-label>
-        <mat-select id="selAcao" [(ngModel)]="turma" name="acao">
+        <mat-select name="turma" formControlName="turma" required >
             <mat-option *ngFor="let turma of turmas" [value]="turma.valor"> {{turma.texto}} </mat-option>
         </mat-select>
-        <mat-hint>Hint</mat-hint>
+        <mat-error *ngIf="alunoRelatorioForm.get('turma')?.errors?.['required']">
+            Este campo é <strong>Obrigatório</strong>
+        </mat-error>
     </mat-form-field>
 
 
@@ -39,7 +49,7 @@
             Imprimir
         </button>
 
-        <button mat-flat-button type="reset" color="warn"> 
+        <button mat-flat-button type="reset" (click)="onReset()" color="warn"> 
             Cancelar
         </button>
     </div>

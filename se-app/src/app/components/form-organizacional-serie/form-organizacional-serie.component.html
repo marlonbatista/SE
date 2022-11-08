@@ -1,24 +1,32 @@
-<form>
+<form (ngSubmit)="onSubmit()" [formGroup]="serieOrganizacionalForm" #formDir="ngForm">
     <mat-form-field class="form-field" appearance="outline" color="accent">
         <mat-label>Ação</mat-label>
-        <mat-select id="selAcao" [(ngModel)]="acao" name="acao">
+        <mat-select id="selAcao" name="acao" formControlName="acao" >
             <mat-option *ngFor="let acao of acoes" [value]="acao.valor"> {{acao.texto}} </mat-option>
         </mat-select>
-        <mat-hint>Hint</mat-hint>
+        <mat-error *ngIf="serieOrganizacionalForm.get('acao')?.errors?.['required']">
+            Este campo é <strong>Obrigatório</strong>
+        </mat-error>
     </mat-form-field>
     
     <mat-form-field class="form-field" appearance="outline" color="accent">
         <mat-label>Série</mat-label>
-        <input matInput type="number" [(ngModel)]="serie" name="serie" placeholder="Ex.: 1">
-        <mat-hint>Hint</mat-hint>
+        <input matInput type="number" name="serie" placeholder="Ex.: 1" formControlName="serie" required />
+        <mat-error *ngIf="serieOrganizacionalForm.get('serie')?.errors?.['required']">
+            Este campo é <strong>Obrigatório</strong>
+        </mat-error>
     </mat-form-field>
 
     <mat-form-field class="form-field" appearance="outline" color="accent">
         <mat-label>Disciplinas</mat-label>
-        <mat-select [(ngModel)]="disciplina" name="disciplina">
-            <mat-option *ngFor="let disciplina of disciplinas" [value]="disciplina.valor"> {{disciplina.texto}} </mat-option>
+        <mat-select name="disciplina" formControlName="disciplinas" multiple >
+            <mat-option 
+                *ngFor="let disciplina of idisciplinas" [value]="disciplina.valor"  
+            > {{disciplina.texto}} </mat-option>
         </mat-select>
-        <mat-hint>Hint</mat-hint>
+        <mat-error *ngIf="serieOrganizacionalForm.get('disciplinas')?.errors?.['required']">
+            Este campo é <strong>Obrigatório</strong>
+        </mat-error>
     </mat-form-field>
     
     <div class="form-field-button">
@@ -26,7 +34,7 @@
             Salvar
         </button>
 
-        <button mat-flat-button type="reset" color="warn"> 
+        <button mat-flat-button type="reset" (click)="onReset()" color="warn"> 
             Cancelar
         </button>
     </div>

@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Programacao\\Projetos\\SE\\se-api\\se-api\\se-api.csproj": {}
+    "D:\\Documentos\\localhost\\SE\\se-api\\se-api\\se-api.csproj": {}
   },
   "projects": {
-    "C:\\Programacao\\Projetos\\SE\\se-api\\se-api\\se-api.csproj": {
+    "D:\\Documentos\\localhost\\SE\\se-api\\se-api\\se-api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Programacao\\Projetos\\SE\\se-api\\se-api\\se-api.csproj",
+        "projectUniqueName": "D:\\Documentos\\localhost\\SE\\se-api\\se-api\\se-api.csproj",
         "projectName": "se-api",
-        "projectPath": "C:\\Programacao\\Projetos\\SE\\se-api\\se-api\\se-api.csproj",
-        "packagesPath": "C:\\Users\\marlo\\.nuget\\packages\\",
-        "outputPath": "C:\\Programacao\\Projetos\\SE\\se-api\\se-api\\obj\\",
+        "projectPath": "D:\\Documentos\\localhost\\SE\\se-api\\se-api\\se-api.csproj",
+        "packagesPath": "C:\\Users\\Nicolasab\\.nuget\\packages\\",
+        "outputPath": "D:\\Documentos\\localhost\\SE\\se-api\\se-api\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\marlo\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Nicolasab\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -47,6 +43,14 @@
             "Arch.EntityFrameworkCore.Analyzers": {
               "target": "Package",
               "version": "[2.1.15, )"
+            },
+            "Microsoft.AspNetCore.Authentication": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[6.0.10, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
@@ -83,7 +87,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -95,7 +100,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     }

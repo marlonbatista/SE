@@ -1,1 +1,3 @@
-<mat-card class="info">Cartão Informativo</mat-card>
+<mat-card class="info" [ngClass]="informacaoService.classe" *ngIf="informacaoService.informacao">
+    {{ informacaoService.informacao }}
+</mat-card>

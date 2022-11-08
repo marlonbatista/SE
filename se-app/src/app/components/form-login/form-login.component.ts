@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { Component, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AutenticacaoService } from 'src/app/services/autenticacao/autenticacao.service';
+import { InformacaoService } from 'src/app/services/informacao/informacao.service';
 
 @Component({
   selector: 'app-form-login',
@@ -10,16 +11,35 @@ import { AutenticacaoService } from 'src/app/services/autenticacao/autenticacao.
 })
 export class FormLoginComponent implements OnInit {
 
+  @Output() card!: boolean;
+
   usuario!: string;
   senha!: string;
 
+  loginForm!: FormGroup;
+
   constructor(
-    // private formBuilder: FormBuilder,
+    private formBuilder: FormBuilder,
     private aut: AutenticacaoService,
     private router: Router,
+    private informacaoService: InformacaoService,
   ) { }
 
   ngOnInit(): void {
+    this.loginForm = this.formBuilder.group({
+      usuario: ['', [Validators.required]],
+      senha: ['', [Validators.required]],
+    });
+  }
+
+  onSubmit() {
+    if(this.loginForm.invalid) {
+      return;
+    }
+
+    // console.log(this.loginForm.value);
+
+    this.login();
   }
 
   login() {
@@ -29,7 +49,7 @@ export class FormLoginComponent implements OnInit {
         alert('Logou!');
       },
       (error) => {
-        alert('Usuário ou senha inválidos');
+        this.informacaoService.add('Usuário ou senha invalidos!', 'danger');
         console.log(error);
       }
     )

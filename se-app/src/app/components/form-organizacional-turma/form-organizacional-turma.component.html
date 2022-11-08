@@ -1,30 +1,38 @@
-<form>
+<form (ngSubmit)="onSubmit()" [formGroup]="turmaOrganizacionalForm" #formDir="ngForm">
     <mat-form-field class="form-field" appearance="outline" color="accent">
         <mat-label>Ação</mat-label>
-        <mat-select id="selAcao" [(ngModel)]="acao" name="acao">
+        <mat-select  name="acao" formControlName="acao" required >
             <mat-option *ngFor="let acao of acoes" [value]="acao.valor"> {{acao.texto}} </mat-option>
         </mat-select>
-        <mat-hint>Hint</mat-hint>
+        <mat-error *ngIf="turmaOrganizacionalForm.get('acao')?.errors?.['required']">
+            Este campo é <strong>Obrigatório</strong>
+        </mat-error>
     </mat-form-field>
     
     <mat-form-field class="form-field" appearance="outline" color="accent">
         <mat-label>Série</mat-label>
-        <input matInput type="number" [(ngModel)]="serie" name="serie" placeholder="Ex.: 1">
-        <mat-hint>Hint</mat-hint>
+        <input matInput type="number" name="serie" placeholder="Ex.: 1" formControlName="serie" required />
+        <mat-error *ngIf="turmaOrganizacionalForm.get('serie')?.errors?.['required']">
+            Este campo é <strong>Obrigatório</strong>
+        </mat-error>
     </mat-form-field>
 
     <mat-form-field class="form-field" appearance="outline" color="accent">
         <mat-label>Turma</mat-label>
-        <input matInput [(ngModel)]="turma" name="turma" placeholder="Ex.: A">
-        <mat-hint>Hint</mat-hint>
+        <input matInput name="turma" placeholder="Ex.: A" formControlName="turma" required />
+        <mat-error *ngIf="turmaOrganizacionalForm.get('turma')?.errors?.['required']">
+            Este campo é <strong>Obrigatório</strong>
+        </mat-error>
     </mat-form-field>
 
     <mat-form-field class="form-field" appearance="outline" color="accent">
         <mat-label>Período</mat-label>
-        <mat-select [(ngModel)]="periodo" name="turno">
+        <mat-select name="turno" formControlName="periodo" required >
             <mat-option *ngFor="let periodo of periodos" [value]="periodo.valor"> {{periodo.texto}} </mat-option>
         </mat-select>
-        <mat-hint>Hint</mat-hint>
+        <mat-error *ngIf="turmaOrganizacionalForm.get('periodo')?.errors?.['required']">
+            Este campo é <strong>Obrigatório</strong>
+        </mat-error>
     </mat-form-field>
     
     <div class="form-field-button">
@@ -32,7 +40,7 @@
             Salvar
         </button>
 
-        <button mat-flat-button type="reset" color="warn"> 
+        <button mat-flat-button type="reset" (click)="onReset()" color="warn"> 
             Cancelar
         </button>
     </div>

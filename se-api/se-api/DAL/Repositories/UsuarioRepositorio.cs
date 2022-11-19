@@ -39,6 +39,9 @@ namespace se_api.DAL
                                                                             SobreNome = usuario.SobreNome,
                                                                             Tipo = usuario.Tipo,
                                                                         });
+            if(query.Count() < 1)
+                return null;
+
             Usuario usuario = new Usuario();
             foreach (var user in query)
                 usuario = user;

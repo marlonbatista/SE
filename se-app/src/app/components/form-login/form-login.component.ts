@@ -43,13 +43,16 @@ export class FormLoginComponent implements OnInit {
   }
 
   login() {
-    this.aut.login(this.usuario, this.senha).subscribe(
+    let usuario = this.loginForm.get('usuario')?.value;
+    let senha = this.loginForm.get('senha')?.value;
+    this.aut.login(usuario, senha).subscribe(
       () => {
-        this.router.navigate([''])
-        alert('Logou!');
+        this.informacaoService.add('Sucesso!', 'success');
+        this.router.navigate(['']);
+        this.informacaoService.remove();
       },
       (error) => {
-        this.informacaoService.add('Usuário ou senha invalidos!', 'danger');
+        this.informacaoService.add(error.error, 'danger');
         console.log(error);
       }
     )

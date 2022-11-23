@@ -43,7 +43,7 @@ namespace se_api.DAL
             foreach (var user in query)
                 usuario = user;
            
-            return usuario;
+            return usuario.Codigo != 0 ? usuario : null;
         }
 
         public void Inserir(Usuario dados)

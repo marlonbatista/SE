@@ -91,7 +91,8 @@ namespace se_api.Controller
                     Nome = respo.Nome,
                     SobreNome = respo.SobreNome,
                     RG = respo.RG,
-                    Telefones = telefones
+                    Telefones = telefones,
+                    Tipo = respo.Tipo
                 });
                 }
             aluno = new Aluno

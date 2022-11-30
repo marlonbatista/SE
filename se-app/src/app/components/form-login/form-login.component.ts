@@ -47,6 +47,7 @@ export class FormLoginComponent implements OnInit {
     let senha = this.loginForm.get('senha')?.value;
     this.aut.login(usuario, senha).subscribe(
       () => {
+
         this.informacaoService.add('Sucesso!', 'success');
         this.router.navigate(['']);
         this.informacaoService.remove();

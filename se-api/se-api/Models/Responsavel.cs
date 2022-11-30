@@ -13,7 +13,7 @@ namespace se_api.Models
         [ForeignKey("Aluno")]
         public int RegistroAluno { get; set; }
         public Aluno Aluno { get; set; }
-
+        [Required(ErrorMessage = "Necessario informa o tipo do contratante")]
         public string Tipo { get; set; }
 
         public Responsavel()
